@@ -44,9 +44,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:backgroundTint="@android:color/transparent"
-                android:hint="NickName"
+                android:hint="Username"
                 android:imeOptions="flagNoExtractUi|flagNoFullscreen|flagNoAccessoryAction"
                 android:inputType="text"
+                android:text="@={vm.nickName}"
                 android:privateImeOptions="nm"
                 android:textSize="13sp" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -67,6 +68,7 @@
                 android:layout_height="match_parent"
                 android:backgroundTint="@android:color/transparent"
                 android:hint="Password"
+                android:text="@={vm.password}"
                 android:imeOptions="flagNoExtractUi|flagNoFullscreen|flagNoAccessoryAction"
                 android:inputType="textPassword"
                 android:privateImeOptions="nm"
@@ -88,6 +90,7 @@
                 android:layout_height="match_parent"
                 android:inputType="text"
                 android:backgroundTint="@android:color/transparent"
+                android:text="@={vm.phone}"
                 android:hint="Phone"
                 android:imeOptions="flagNoExtractUi|flagNoFullscreen|flagNoAccessoryAction"
                 android:privateImeOptions="nm"
@@ -109,7 +112,8 @@
                 android:layout_height="match_parent"
                 android:backgroundTint="@android:color/transparent"
                 android:inputType="text"
-                android:hint="Email"
+                android:text="@={vm.name}"
+                android:hint="Name"
                 android:imeOptions="flagNoExtractUi|flagNoFullscreen|flagNoAccessoryAction"
                 android:privateImeOptions="nm"
                 android:textSize="13sp" />
