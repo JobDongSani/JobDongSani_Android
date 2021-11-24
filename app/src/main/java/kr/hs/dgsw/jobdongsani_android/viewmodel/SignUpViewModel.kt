@@ -18,7 +18,7 @@ class SignUpViewModel : BaseViewModel() {
     val name = MutableLiveData<String>()
 
     fun register() {
-        if (nickName.value == null || password.value == null || name.value == null || phone.value == null) {
+        if (nickName.value == null || password.value == null || name.value == null || phone.value == null || image.value == null) {
             onErrorEvent.value = Throwable("모두 입력해주세요")
             return
         }
@@ -26,7 +26,7 @@ class SignUpViewModel : BaseViewModel() {
             authRepository.register(nickName.value!!,
                 password.value!!,
                 name.value!!,
-                phone.value!!), {
+                phone.value!!, image.value!!), {
                 isSuccess.value = true
             }, {
                 isSuccess.value = false

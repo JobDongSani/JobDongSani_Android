@@ -38,6 +38,8 @@ class SignUpActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding =
             DataBindingUtil.setContentView<ActivitySignUpBinding>(this, R.layout.activity_sign_up)
+        binding.lifecycleOwner = this
+        binding.vm = viewModel
 
         binding.btnImage.setOnClickListener {
             val intent = Intent().setType("image/*").setAction(Intent.ACTION_GET_CONTENT)
@@ -49,6 +51,15 @@ class SignUpActivity : AppCompatActivity() {
                 .load(viewModel.image.value)
                 .into(binding.btnImage)
             binding.btnImage.setBorderWidth(0F)
+        })
+        viewModel.onErrorEvent.observe(this, {
+            Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
+        })
+        viewModel.isSuccess.observe(this, {
+            if(it) {
+                Toast.makeText(this, "회원가입 하였습니다", Toast.LENGTH_SHORT).show()
+                finish()
+            }
         })
     }
 

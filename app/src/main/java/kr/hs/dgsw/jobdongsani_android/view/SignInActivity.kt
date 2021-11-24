@@ -58,7 +58,7 @@ class SignInActivity : AppCompatActivity() {
                 finish()
             })
             onSignUpEvent.observe(this@SignInActivity, {
-                val intent = Intent()
+                val intent = Intent(this@SignInActivity, SignUpActivity::class.java)
                 startActivity(intent)
             })
             onErrorEvent.observe(this@SignInActivity, {
