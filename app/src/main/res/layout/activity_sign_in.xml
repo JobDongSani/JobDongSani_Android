@@ -3,7 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data></data>
+    <data>
+
+        <variable
+            name="vm"
+            type="kr.hs.dgsw.jobdongsani_android.viewmodel.SignInViewModel" />
+
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -41,7 +47,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:backgroundTint="@android:color/transparent"
-                android:hint="Nickname"
+                android:hint="ID"
+                android:text="@={vm.id}"
                 android:imeOptions="flagNoExtractUi|flagNoFullscreen|flagNoAccessoryAction"
                 android:inputType="text"
                 android:privateImeOptions="nm"
@@ -64,6 +71,7 @@
                 android:layout_height="match_parent"
                 android:backgroundTint="@android:color/transparent"
                 android:hint="Password"
+                android:text="@={vm.pw}"
                 android:imeOptions="flagNoExtractUi|flagNoFullscreen|flagNoAccessoryAction"
                 android:inputType="textPassword"
                 android:privateImeOptions="nm"
@@ -77,6 +85,7 @@
             android:backgroundTint="@color/main"
             android:fontFamily="@font/noto_sans_light"
             android:text="@string/login"
+            android:onClick="@{vm::login}"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/input_layout_pw" />
