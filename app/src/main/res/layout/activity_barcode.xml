@@ -48,30 +48,50 @@
             android:layout_width="match_parent"
             android:layout_height="300dp"
             android:layout_gravity="bottom"
-            android:orientation="vertical"
             android:background="@drawable/background_card"
+            android:orientation="vertical"
             android:paddingHorizontal="35dp">
 
             <ScrollView
                 android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:overScrollMode="never"
-                android:scrollbars="none"
-                android:layout_height="match_parent">
+                android:scrollbars="none">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
-                    <TextView
-                        android:id="@+id/tv_info"
-                        android:layout_width="wrap_content"
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="40dp"
-                        android:fontFamily="@font/noto_sans_bold"
-                        android:includeFontPadding="false"
-                        android:text="정보"
-                        android:textColor="@color/textColor"
-                        android:textSize="20sp" />
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tv_info"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/noto_sans_bold"
+                            android:includeFontPadding="false"
+                            android:text="정보"
+                            android:textColor="@color/textColor"
+                            android:textSize="20sp" />
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_weight="1" />
+
+                        <ImageView
+                            android:id="@+id/btn_refresh"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@android:drawable/ic_menu_rotate"
+                            app:tint="@color/main" />
+
+                    </LinearLayout>
 
                     <TextView
                         android:id="@+id/tv_product_name"
