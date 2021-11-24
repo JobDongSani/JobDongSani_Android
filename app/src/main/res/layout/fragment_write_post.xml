@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".WritePostFragment">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_appbar"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/btn_back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="15dp"
+                    android:src="@drawable/ic_arrow_back"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_appbar_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:fontFamily="@font/noto_sans_bold"
+                    android:includeFontPadding="false"
+                    android:text="@string/text_write_post"
+                    android:textColor="@color/black"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/btn_back"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/light_grey"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <ImageView
+                android:id="@+id/btn_image_picker"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:src="@drawable/ic_image_picker"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/layout_appbar" />
+
+            <View
+                android:id="@+id/view3"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginTop="20dp"
+                android:background="@color/light_grey"
+                app:layout_constraintTop_toBottomOf="@+id/btn_image_picker"
+                tools:layout_editor_absoluteX="15dp" />
+
+            <EditText
+                android:id="@+id/et_title"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginTop="45dp"
+                android:backgroundTint="@color/light_grey"
+                android:fontFamily="@font/noto_sans_medium"
+                android:hint="제목을 입력해주세요"
+                android:imeOptions="flagNoExtractUi|flagNoFullscreen|flagNoAccessoryAction"
+                android:includeFontPadding="false"
+                android:inputType="text"
+                android:privateImeOptions="nm"
+                android:textColor="@color/black"
+                android:textSize="13sp"
+                app:layout_constraintTop_toBottomOf="@+id/view3" />
+
+            <EditText
+                android:id="@+id/et_content"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginTop="40dp"
+                android:backgroundTint="@color/light_grey"
+                android:fontFamily="@font/noto_sans_medium"
+                android:hint="내용을 입력해주세요"
+                android:imeOptions="flagNoExtractUi|flagNoFullscreen|flagNoAccessoryAction"
+                android:includeFontPadding="false"
+                android:inputType="text"
+                android:privateImeOptions="nm"
+                android:textColor="@color/black"
+                android:textSize="13sp"
+                app:layout_constraintTop_toBottomOf="@+id/et_title" />
+
+            <EditText
+                android:id="@+id/et_phone_number"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginTop="40dp"
+                android:backgroundTint="@color/light_grey"
+                android:fontFamily="@font/noto_sans_medium"
+                android:hint="전화번호를 입력해주세요"
+                android:imeOptions="flagNoExtractUi|flagNoFullscreen|flagNoAccessoryAction"
+                android:includeFontPadding="false"
+                android:inputType="text"
+                android:privateImeOptions="nm"
+                android:textColor="@color/black"
+                android:textSize="13sp"
+                app:layout_constraintTop_toBottomOf="@+id/et_content" />
+
+            <EditText
+                android:id="@+id/et_local"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginTop="40dp"
+                android:backgroundTint="@color/light_grey"
+                android:fontFamily="@font/noto_sans_medium"
+                android:hint="지역을 입력해주세요(ex. OO군 OO동)"
+                android:imeOptions="flagNoExtractUi|flagNoFullscreen|flagNoAccessoryAction"
+                android:includeFontPadding="false"
+                android:inputType="text"
+                android:privateImeOptions="nm"
+                android:textColor="@color/black"
+                android:textSize="13sp"
+                app:layout_constraintTop_toBottomOf="@+id/et_phone_number" />
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_write_post"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:backgroundTint="@color/main"
+                android:fontFamily="@font/noto_sans_medium"
+                android:includeFontPadding="false"
+                android:text="게시글 작성"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>
