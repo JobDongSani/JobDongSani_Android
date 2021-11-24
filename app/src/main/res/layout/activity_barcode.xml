@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="kr.hs.dgsw.jobdongsani_android.viewmodel.BarcodeViewModel" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#A1A1A1"
+        tools:context=".view.BarcodeActivity">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="top|start"
+            android:layout_margin="20dp"
+            android:src="@drawable/ic_left_arrow" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="250dp"
+            android:backgroundTint="#4B4B4B"
+            app:cardCornerRadius="10dp">
+
+            <TextView
+                android:id="@+id/tv_barcode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/noto_sans_light"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="3dp"
+                android:text="바코드를 입력해주세요"
+                android:textColor="@color/white"
+                android:textSize="12sp" />
+
+        </androidx.cardview.widget.CardView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_gravity="bottom"
+            android:orientation="vertical"
+            android:background="@drawable/background_card"
+            android:paddingHorizontal="35dp">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:overScrollMode="never"
+                android:scrollbars="none"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/tv_info"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="40dp"
+                        android:fontFamily="@font/noto_sans_bold"
+                        android:includeFontPadding="false"
+                        android:text="정보"
+                        android:textColor="@color/textColor"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/tv_product_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:fontFamily="@font/noto_sans_medium"
+                        android:includeFontPadding="false"
+                        android:text="제품 명:"
+                        android:textColor="@color/textColor"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/tv_type"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:fontFamily="@font/noto_sans_medium"
+                        android:includeFontPadding="false"
+                        android:text="종류 :"
+                        android:textColor="@color/textColor"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/tv_separate_collection"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:fontFamily="@font/noto_sans_medium"
+                        android:includeFontPadding="false"
+                        android:text="분리수거 방법: "
+                        android:textColor="@color/textColor"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/tv_none_info"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="20dp"
+                        android:fontFamily="@font/noto_sans_medium"
+                        android:includeFontPadding="false"
+                        android:text="정보가 없습니다"
+                        android:textColor="@color/textColor"
+                        android:textSize="15sp"
+                        android:visibility="gone" />
+                </LinearLayout>
+
+            </ScrollView>
+
+        </LinearLayout>
+
+
+    </FrameLayout>
+</layout>

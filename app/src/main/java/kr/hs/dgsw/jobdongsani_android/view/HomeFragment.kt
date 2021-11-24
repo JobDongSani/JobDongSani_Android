@@ -1,5 +1,6 @@
 package kr.hs.dgsw.jobdongsani_android.view
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -15,7 +16,7 @@ class HomeFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ): View? {
+    ): View {
         val binding = DataBindingUtil.inflate<FragmentHomeBinding>(inflater,R.layout.fragment_home, container, false)
         binding.lifecycleOwner = this
 
@@ -24,11 +25,13 @@ class HomeFragment : Fragment() {
         }
 
         binding.btnBarcode.setOnClickListener {
-
+            val intent= Intent(requireContext(), BarcodeActivity::class.java)
+            startActivity(intent)
         }
 
         binding.rvSharePost.adapter = sharePostAdapter
 
         return binding.root
     }
+
 }
