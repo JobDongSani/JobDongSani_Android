@@ -6,5 +6,7 @@ data class SearchResponse(
 
 data class Product(
     val title: String,
-    val barcode: String = ""
+    val barcode: String = "",
+    val wasteType: String = "",
+    val way: String = ""
 )
