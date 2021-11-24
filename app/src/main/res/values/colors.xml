@@ -12,4 +12,5 @@
     <color name="textColor">@color/black</color>
 
     <color name="progressBackground">@color/main</color>
+    <color name="light_grey">#868686</color>
 </resources>
