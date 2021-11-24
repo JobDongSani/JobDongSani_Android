@@ -19,7 +19,7 @@ class SignInViewModel() : BaseViewModel() {
 
     fun login(view: View?) {
         if (id.value.isNullOrBlank() || pw.value.isNullOrBlank()) {
-            throw Throwable("아이디 혹은 패스워드를 입력해주세요")
+            onErrorEvent.value = Throwable("아이디 혹은 패스워드를 입력해주세요")
         } else {
             isLoading.value = true
             addDisposable(authRepository.login(id.value!!, pw.value!!),

@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.text.Spannable
 import android.text.style.ForegroundColorSpan
 import android.text.style.RelativeSizeSpan
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.annotation.ColorRes
 import androidx.databinding.DataBindingUtil
@@ -59,6 +60,9 @@ class SignInActivity : AppCompatActivity() {
             onSignUpEvent.observe(this@SignInActivity, {
                 val intent = Intent()
                 startActivity(intent)
+            })
+            onErrorEvent.observe(this@SignInActivity, {
+                Toast.makeText(this@SignInActivity, it.message, Toast.LENGTH_SHORT).show()
             })
         }
     }
