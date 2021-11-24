@@ -7,7 +7,6 @@ import kr.hs.dgsw.jobdongsani_android.model.request.SignInRequest
 import kr.hs.dgsw.jobdongsani_android.model.request.SignUpRequest
 import kr.hs.dgsw.jobdongsani_android.model.response.SignInResponse
 import org.json.JSONObject
-import kotlin.math.sign
 
 class AuthRepository {
 
@@ -20,7 +19,7 @@ class AuthRepository {
                 val errorBody = JSONObject(it.errorBody()!!.string())
                 throw Throwable(errorBody.getString("message"))
             }
-            if (it.body()?.code != 200) {
+            if (it.body()?.status != 200) {
                 throw Throwable(it.body()?.message)
             }
             it.body()!!.data
@@ -41,7 +40,7 @@ class AuthRepository {
                 throw Throwable(errorBody.getString("message"))
             }
 
-            if (it.body()?.code != 200) {
+            if (it.body()?.status != 200) {
                 throw Throwable(it.body()?.message)
             }
 
