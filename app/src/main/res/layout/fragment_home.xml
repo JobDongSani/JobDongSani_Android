@@ -7,25 +7,34 @@
 
     </data>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         tools:context=".view.HomeFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/appbar_layout"
             android:layout_width="match_parent"
-            android:layout_height="50dp">
+            android:layout_height="50dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
                 android:id="@+id/btn_barcode"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="17dp"
                 android:layout_marginEnd="5dp"
+                android:padding="17dp"
                 android:src="@drawable/ic_barcode"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/light_grey"
+                app:layout_constraintBottom_toBottomOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -35,11 +44,23 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btn_barcode"
+            app:layout_constraintTop_toBottomOf="@+id/appbar_layout"
             tools:itemCount="4"
             tools:listitem="@layout/item_share_post" />
 
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="15dp"
+            android:background="@color/white"
+            app:fabCustomSize="64dp"
+            android:backgroundTint="@color/main"
+            android:src="@drawable/ic_img_plus"
+            app:backgroundTint="@color/main"
+            app:tint="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
