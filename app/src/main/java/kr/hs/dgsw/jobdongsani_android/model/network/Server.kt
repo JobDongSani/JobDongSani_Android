@@ -1,6 +1,6 @@
 package kr.hs.dgsw.jobdongsani_android.model.network
 
-import kr.hs.dgsw.jobdongsani_android.model.network.service.AuthService
+import kr.hs.dgsw.jobdongsani_android.model.network.api.AuthApi
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -13,12 +13,13 @@ object Server {
         .addNetworkInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
         .build()
 
-    val authRetrofit = Retrofit.Builder()
+    val retrofit = Retrofit.Builder()
         .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
         .addConverterFactory(GsonConverterFactory.create())
         .client(okHttpClient)
         .baseUrl("http://118.67.129.190:8080")
         .build()
-        .create(AuthService::class.java)
+
+    val authService: AuthApi = retrofit.create(AuthApi::class.java)
 
 }

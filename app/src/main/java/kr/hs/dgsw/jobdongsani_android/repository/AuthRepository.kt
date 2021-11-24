@@ -14,7 +14,7 @@ class AuthRepository {
     fun login(username: String, password: String): Single<SignInResponse> {
         val signInRequest = SignInRequest(username, password)
 
-        return Server.authRetrofit.login(signInRequest).map {
+        return Server.authService.login(signInRequest).map {
 
             if (!it.isSuccessful) {
                 val errorBody = JSONObject(it.errorBody()!!.string())
@@ -34,7 +34,7 @@ class AuthRepository {
         phonenumber: String,
     ): Completable {
         val signUpRequest = SignUpRequest(username, password, name, phonenumber)
-        return Server.authRetrofit.register(signUpRequest).flatMapCompletable {
+        return Server.authService.register(signUpRequest).flatMapCompletable {
 
             if (!it.isSuccessful) {
                 val errorBody = JSONObject(it.errorBody()!!.string())
