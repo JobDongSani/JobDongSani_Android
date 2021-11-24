@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="vm"
+            type="kr.hs.dgsw.jobdongsani_android.viewmodel.SignUpViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingHorizontal="40dp"
+        tools:context=".view.SignUpActivity">
+
+        <com.mikhaellopez.circularimageview.CircularImageView
+            android:id="@+id/btn_image"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            app:civ_border="true"
+            app:civ_border_width="1dp"
+            app:civ_border_color="@color/main"
+            android:layout_marginBottom="80dp"
+            android:src="@drawable/ic_icon_add_image"
+            app:layout_constraintBottom_toTopOf="@id/input_layout_nickname"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/input_layout_nickname"
+            style="@style/Custom_textinputlayout_filledbox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:theme="@style/Custom_textinputlayout_filledbox"
+            app:layout_constraintBottom_toTopOf="@id/input_layout_pw"
+            app:layout_constraintTop_toBottomOf="@id/btn_image">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTint="@android:color/transparent"
+                android:hint="NickName"
+                android:imeOptions="flagNoExtractUi|flagNoFullscreen|flagNoAccessoryAction"
+                android:inputType="text"
+                android:privateImeOptions="nm"
+                android:textSize="13sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/input_layout_pw"
+            style="@style/Custom_textinputlayout_filledbox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:theme="@style/Custom_textinputlayout_filledbox"
+            app:layout_constraintBottom_toTopOf="@id/input_layout_phone"
+            app:layout_constraintTop_toBottomOf="@id/input_layout_nickname"
+            app:passwordToggleEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTint="@android:color/transparent"
+                android:hint="Password"
+                android:imeOptions="flagNoExtractUi|flagNoFullscreen|flagNoAccessoryAction"
+                android:inputType="textPassword"
+                android:privateImeOptions="nm"
+                android:textSize="13sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/input_layout_phone"
+            style="@style/Custom_textinputlayout_filledbox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:theme="@style/Custom_textinputlayout_filledbox"
+            app:layout_constraintBottom_toTopOf="@id/input_layout_email"
+            app:layout_constraintTop_toBottomOf="@id/input_layout_pw">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="text"
+                android:backgroundTint="@android:color/transparent"
+                android:hint="Phone"
+                android:imeOptions="flagNoExtractUi|flagNoFullscreen|flagNoAccessoryAction"
+                android:privateImeOptions="nm"
+                android:textSize="13sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/input_layout_email"
+            style="@style/Custom_textinputlayout_filledbox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="60dp"
+            android:theme="@style/Custom_textinputlayout_filledbox"
+            app:layout_constraintBottom_toTopOf="@id/btn_join"
+            app:layout_constraintTop_toBottomOf="@id/input_layout_phone">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTint="@android:color/transparent"
+                android:inputType="text"
+                android:hint="Email"
+                android:imeOptions="flagNoExtractUi|flagNoFullscreen|flagNoAccessoryAction"
+                android:privateImeOptions="nm"
+                android:textSize="13sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_join"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:backgroundTint="@color/main"
+            android:fontFamily="@font/noto_sans_light"
+            android:text="@string/join"
+            android:onClick="@{()->vm.register()}"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/input_layout_email" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:text="아직 회원이 아니신가요?"
+            android:textColor="#868686"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
