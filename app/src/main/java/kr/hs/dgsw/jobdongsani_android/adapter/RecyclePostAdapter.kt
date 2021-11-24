@@ -18,8 +18,8 @@ class RecyclePostAdapter :
 
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclePostViewHolder {
-        RecyclePostAdapter.RecyclePostViewHolder(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclePostViewHolder =
+        RecyclePostViewHolder(
             DataBindingUtil.inflate(
                 LayoutInflater.from(parent.context),
                 R.layout.item_recycle_post,
@@ -27,11 +27,12 @@ class RecyclePostAdapter :
                 false
             )
         )
-    }
+
 
     override fun onBindViewHolder(holder: RecyclePostViewHolder, position: Int) {
 
     }
+
     companion object {
         val onClickDelete = SingleLiveEvent<Unit>()
     }
