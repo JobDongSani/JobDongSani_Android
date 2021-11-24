@@ -32,7 +32,7 @@ class BarcodeActivity : AppCompatActivity() {
             toggleTextView(binding, true)
             binding.btnRefresh.setOnClickListener { _ -> viewModel.getResult(it.barcode) }
 
-            when(it.wasteType) {
+            when (it.wasteType) {
                 "" -> {
                     PickWasteTypeDialog(it.barcode).show(supportFragmentManager, "Pick Waste Type")
                 }
@@ -55,8 +55,13 @@ class BarcodeActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         val result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
-        val barcode = result.contents
-        viewModel.getResult(barcode)
+        try {
+            val barcode = result.contents
+            viewModel.getResult(barcode)
+        } catch (e: NullPointerException) {
+            Toast.makeText(this, "바코드를 인식하지 못했습니다!", Toast.LENGTH_SHORT).show()
+            finish()
+        }
     }
 
     private fun toggleTextView(binding: ActivityBarcodeBinding, isExist: Boolean) {
