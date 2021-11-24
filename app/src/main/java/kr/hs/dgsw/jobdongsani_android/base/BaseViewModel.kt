@@ -1,6 +1,7 @@
 package kr.hs.dgsw.jobdongsani_android.base
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import io.reactivex.Completable
@@ -14,8 +15,10 @@ abstract class BaseViewModel : ViewModel() {
     private val disposable = CompositeDisposable()
     val onErrorEvent = MutableLiveData<Throwable>()
 
-    private val isLoading = MutableLiveData<Boolean>()
-    val getIsLoading: LiveData<Boolean> = isLoading
+    protected val isLoading: MediatorLiveData<Boolean> = MediatorLiveData<Boolean>()
+    fun getIsLoading(): LiveData<Boolean> {
+        return isLoading
+    }
 
     fun <T> addDisposable(
         single: Single<T>,
