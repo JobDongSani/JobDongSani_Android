@@ -17,7 +17,7 @@ object Server {
         .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
         .addConverterFactory(GsonConverterFactory.create())
         .client(okHttpClient)
-        .baseUrl("http://118.67.129.190")
+        .baseUrl("http://118.67.129.190:8080")
         .build()
         .create(AuthService::class.java)
 
