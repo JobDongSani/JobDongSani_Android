@@ -10,4 +10,6 @@
 
     <color name="main">#7190FF</color>
     <color name="textColor">@color/black</color>
+
+    <color name="progressBackground">@color/main</color>
 </resources>

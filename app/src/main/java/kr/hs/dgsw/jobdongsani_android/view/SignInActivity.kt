@@ -31,15 +31,17 @@ class SignInActivity : AppCompatActivity() {
 
         val binding = DataBindingUtil.setContentView<ActivitySignInBinding>(this, R.layout.activity_sign_in)
         binding.lifecycleOwner = this
+        binding.vm = mViewModel
 
         (binding.tvAppTitle.text as Spannable).setSpan(RelativeSizeSpan(2f), 0, 4, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
         (binding.tvAppTitle.text as Spannable).setSpan(ForegroundColorSpan(resources.getColor(R.color.main)), 0, 4, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
 
-        (binding.tvRegisterTitle.text as Spannable).setSpan(ForegroundColorSpan(resources.getColor(R.color.main)), 15, 20, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+        (binding.tvRegisterTitle.text as Spannable).setSpan(ForegroundColorSpan(resources.getColor(R.color.main)), 14, 20, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
 
         mPreferences = getSharedPreferences("SignInActivity", MODE_PRIVATE)
         mBinding = binding
 
+        observerViewModel()
     }
 
     fun observerViewModel() {

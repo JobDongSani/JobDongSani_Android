@@ -20,6 +20,6 @@ object Server {
         .baseUrl("http://118.67.129.190:8080")
         .build()
 
-    val authService: AuthApi = retrofit.create(AuthApi::class.java)
+    val authService : AuthApi = retrofit.create(AuthApi::class.java)
 
 }
