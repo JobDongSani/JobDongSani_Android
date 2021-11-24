@@ -35,6 +35,8 @@ class SignInActivity : AppCompatActivity() {
         (binding.tvAppTitle.text as Spannable).setSpan(RelativeSizeSpan(2f), 0, 4, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
         (binding.tvAppTitle.text as Spannable).setSpan(ForegroundColorSpan(resources.getColor(R.color.main)), 0, 4, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
 
+        (binding.tvRegisterTitle.text as Spannable).setSpan(ForegroundColorSpan(resources.getColor(R.color.main)), 15, 20, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+
         mPreferences = getSharedPreferences("SignInActivity", MODE_PRIVATE)
         mBinding = binding
 
@@ -51,6 +53,10 @@ class SignInActivity : AppCompatActivity() {
                 val intent = Intent(this@SignInActivity, MainActivity::class.java)
                 startActivity(intent)
                 finish()
+            })
+            onSignUpEvent.observe(this@SignInActivity, {
+                val intent = Intent()
+                startActivity(intent)
             })
         }
     }
