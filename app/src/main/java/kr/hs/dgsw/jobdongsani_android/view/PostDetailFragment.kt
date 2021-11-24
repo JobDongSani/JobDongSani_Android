@@ -9,8 +9,6 @@ class PostDetailFragment : BaseFragment<FragmentPostDetailBinding, PostDetailVie
 
     override val viewModel: PostDetailViewModel by viewModels()
 
-    override val isBottomNavFragment: Boolean = false
-
     override fun observerViewModel() {
         with(viewModel) {
 

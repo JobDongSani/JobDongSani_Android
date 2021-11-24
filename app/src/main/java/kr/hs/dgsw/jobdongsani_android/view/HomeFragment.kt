@@ -7,31 +7,31 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.viewModels
 import kr.hs.dgsw.jobdongsani_android.R
 import kr.hs.dgsw.jobdongsani_android.adapter.SharePostAdapter
+import kr.hs.dgsw.jobdongsani_android.base.BaseFragment
 import kr.hs.dgsw.jobdongsani_android.databinding.FragmentHomeBinding
+import kr.hs.dgsw.jobdongsani_android.viewmodel.HomeViewModel
 
-class HomeFragment : Fragment() {
+class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?,
-    ): View {
-        val binding = DataBindingUtil.inflate<FragmentHomeBinding>(inflater,R.layout.fragment_home, container, false)
-        binding.lifecycleOwner = this
+    override val viewModel: HomeViewModel by viewModels()
+
+    override val isBottomNavFragment = true
+
+    override fun observerViewModel() {
 
         val sharePostAdapter = SharePostAdapter().apply {
             submitList(listOf(Any(), Any(), Any()))
         }
 
-        binding.btnBarcode.setOnClickListener {
+        mBinding.btnBarcode.setOnClickListener {
             val intent= Intent(requireContext(), BarcodeActivity::class.java)
             startActivity(intent)
         }
 
-        binding.rvSharePost.adapter = sharePostAdapter
-
-        return binding.root
+        mBinding.rvSharePost.adapter = sharePostAdapter
     }
 
 }
