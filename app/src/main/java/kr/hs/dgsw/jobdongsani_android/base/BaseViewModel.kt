@@ -29,7 +29,7 @@ abstract class BaseViewModel : ViewModel() {
         )
     }
 
-    fun <T> addDisposable(
+    fun addDisposable(
         completable: Completable,
         onSuccess: () -> Unit,
         onFailure: (Throwable) -> Unit,
