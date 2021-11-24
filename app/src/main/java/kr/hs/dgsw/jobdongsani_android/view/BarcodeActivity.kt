@@ -5,6 +5,7 @@ import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import com.google.zxing.integration.android.IntentIntegrator
@@ -27,9 +28,18 @@ class BarcodeActivity : AppCompatActivity() {
 
         viewModel.result.observe(this, {
             binding.tvProductName.text = it.title
+            binding.tvType.text = "종류: ${it.wasteType}"
             toggleTextView(binding, true)
+            binding.btnRefresh.setOnClickListener { _ -> viewModel.getResult(it.barcode) }
+
+            when(it.wasteType) {
+                "" -> {
+                    PickWasteTypeDialog(it.barcode).show(supportFragmentManager, "Pick Waste Type")
+                }
+            }
         })
         viewModel.onErrorEvent.observe(this, {
+            Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
             toggleTextView(binding, false)
         })
     }
@@ -46,10 +56,10 @@ class BarcodeActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         val result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
         val barcode = result.contents
-        viewModel.getResult("8801062221974")
+        viewModel.getResult(barcode)
     }
 
-    fun toggleTextView(binding: ActivityBarcodeBinding, isExist: Boolean) {
+    private fun toggleTextView(binding: ActivityBarcodeBinding, isExist: Boolean) {
         if (isExist) {
             binding.tvProductName.visibility = View.VISIBLE
             binding.tvSeparateCollection.visibility = View.VISIBLE
