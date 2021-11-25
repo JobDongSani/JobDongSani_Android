@@ -1,9 +1,6 @@
 package kr.hs.dgsw.jobdongsani_android.model.network
 
-import kr.hs.dgsw.jobdongsani_android.model.network.api.AuthApi
-import kr.hs.dgsw.jobdongsani_android.model.network.api.ProductApi
-import kr.hs.dgsw.jobdongsani_android.model.network.api.TrashShareBoardApi
-import kr.hs.dgsw.jobdongsani_android.model.network.api.UploadApi
+import kr.hs.dgsw.jobdongsani_android.model.network.api.*
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -27,4 +24,5 @@ object Server {
     val productApi: ProductApi = retrofit.create(ProductApi::class.java)
     val uploadApi: UploadApi = retrofit.create(UploadApi::class.java)
     val trashShareBoardApi : TrashShareBoardApi = retrofit.create(TrashShareBoardApi::class.java)
+    val profileApi: ProfileApi = retrofit.create(ProfileApi::class.java)
 }

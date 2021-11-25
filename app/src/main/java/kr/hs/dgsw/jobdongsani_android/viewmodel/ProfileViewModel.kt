@@ -34,4 +34,8 @@ class ProfileViewModel : BaseViewModel() {
         }
     }
 
+    fun getProfile() {
+
+    }
+
 }
