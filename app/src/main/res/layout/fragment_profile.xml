@@ -23,6 +23,7 @@
             android:layout_marginStart="15dp"
             android:layout_marginTop="20dp"
             android:scaleType="centerCrop"
+            android:src="@{vm.userImage}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:src="@mipmap/ic_launcher" />
@@ -37,6 +38,7 @@
             android:includeFontPadding="false"
             android:textColor="@color/black"
             android:textSize="16sp"
+            android:text="@{vm.name}"
             app:layout_constraintStart_toEndOf="@+id/cv_profile_image"
             app:layout_constraintTop_toTopOf="@+id/cv_profile_image"
             tools:text="황현빈" />
@@ -49,6 +51,7 @@
             android:layout_marginBottom="10dp"
             android:textColor="@color/light_grey"
             android:textSize="12sp"
+            android:text="@{vm.username}"
             app:layout_constraintBottom_toBottomOf="@+id/cv_profile_image"
             app:layout_constraintStart_toEndOf="@+id/cv_profile_image"
             tools:text="hhb041127" />
