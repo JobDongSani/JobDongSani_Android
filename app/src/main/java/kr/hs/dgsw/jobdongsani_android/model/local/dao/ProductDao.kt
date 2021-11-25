@@ -1,9 +1,6 @@
 package kr.hs.dgsw.jobdongsani_android.model.local.dao
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import io.reactivex.Completable
 import io.reactivex.Single
 import kr.hs.dgsw.jobdongsani_android.model.local.entity.ProductEntity
@@ -16,5 +13,8 @@ interface ProductDao {
 
     @Query("SELECT * FROM ProductEntity")
     fun getAllProduct(): Single<List<ProductEntity>>
+
+    @Delete
+    fun deleteProduct(product: ProductEntity): Completable
 
 }

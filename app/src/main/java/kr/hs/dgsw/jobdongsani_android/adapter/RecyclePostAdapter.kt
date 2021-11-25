@@ -18,11 +18,15 @@ class RecyclePostAdapter :
     class RecyclePostViewHolder(val binding: ItemRecyclePostBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-            fun bind(productEntity: ProductEntity) {
-                binding.tvArticle.text = productEntity.title
-                binding.tvKind.text = "종류: ${productEntity.wasteType}"
-                binding.tvRecycleWay.text = "분리수거 방법: ${productEntity.way}"
+        fun bind(productEntity: ProductEntity) {
+            binding.tvArticle.text = productEntity.title
+            binding.tvKind.text = "종류: ${productEntity.wasteType}"
+            binding.tvRecycleWay.text = "분리수거 방법: ${productEntity.way}"
+            binding.layout.setOnLongClickListener {
+                onClickDelete.value = productEntity
+                return@setOnLongClickListener false
             }
+        }
 
     }
 
@@ -42,6 +46,6 @@ class RecyclePostAdapter :
     }
 
     companion object {
-        val onClickDelete = SingleLiveEvent<Unit>()
+        val onClickDelete = SingleLiveEvent<ProductEntity>()
     }
 }

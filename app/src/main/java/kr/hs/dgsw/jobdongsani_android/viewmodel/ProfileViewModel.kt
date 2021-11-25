@@ -4,7 +4,6 @@ import androidx.lifecycle.MutableLiveData
 import kr.hs.dgsw.jobdongsani_android.base.BaseViewModel
 import kr.hs.dgsw.jobdongsani_android.model.local.AppDatabase.Companion.instance
 import kr.hs.dgsw.jobdongsani_android.model.local.entity.ProductEntity
-import kr.hs.dgsw.jobdongsani_android.model.network.Server.productApi
 
 class ProfileViewModel : BaseViewModel() {
 
@@ -19,6 +18,19 @@ class ProfileViewModel : BaseViewModel() {
                     onErrorEvent.value = it
                 }
             )
+        }
+    }
+
+    fun deleteProduct(productEntity: ProductEntity) {
+        instance?.productDao?.apply {
+            addDisposable(
+                deleteProduct(productEntity), {
+                    getSavedProduct()
+                }, {
+                    onErrorEvent.value = it
+                }
+            )
+
         }
     }
 
