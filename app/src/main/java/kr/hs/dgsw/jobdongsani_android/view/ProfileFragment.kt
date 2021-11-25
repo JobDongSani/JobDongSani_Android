@@ -19,6 +19,9 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding, ProfileViewModel>()
             onProductListResult.observe(this@ProfileFragment, {
                 recyclePostAdapter.submitList(it)
             })
+            RecyclePostAdapter.onClickDelete.observe(this@ProfileFragment, {
+                deleteProduct(it)
+            })
         }
     }
 
