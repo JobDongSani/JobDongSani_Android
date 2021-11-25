@@ -26,8 +26,8 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding, ProfileViewModel>()
             })
             userImage.observe(this@ProfileFragment, {
                 Glide.with(mBinding.root)
-                    .load(userImage).
-                    error(R.drawable.ic_img_default_user)
+                    .load(it)
+                    .error(R.drawable.ic_img_default_user)
                     .into(mBinding.cvProfileImage)
             })
         }
