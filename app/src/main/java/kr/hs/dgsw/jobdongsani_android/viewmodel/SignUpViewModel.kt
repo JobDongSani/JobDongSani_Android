@@ -22,14 +22,17 @@ class SignUpViewModel : BaseViewModel() {
             onErrorEvent.value = Throwable("모두 입력해주세요")
             return
         }
+        isLoading.value = true
         addDisposable(
             authRepository.register(nickName.value!!,
                 password.value!!,
                 name.value!!,
                 phone.value!!, image.value!!), {
                 isSuccess.value = true
+                isLoading.value = false
             }, {
                 isSuccess.value = false
+                isLoading.value = false
                 onErrorEvent.value = it
             }
         )

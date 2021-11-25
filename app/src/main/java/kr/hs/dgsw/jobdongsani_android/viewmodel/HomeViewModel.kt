@@ -12,8 +12,10 @@ class HomeViewModel : BaseViewModel() {
     val boardList = MutableLiveData<List<TrashShareBoardResponse>>()
 
     fun getBoard() {
+        isLoading.value = true
         addDisposable(
             trashShareBoardRepository.getAllPost(), {
+                isLoading.value = false
                 boardList.value = it
             }, {
                 onErrorEvent.value = it

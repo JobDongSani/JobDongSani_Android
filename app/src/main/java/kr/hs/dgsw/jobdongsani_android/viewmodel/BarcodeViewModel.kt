@@ -13,10 +13,13 @@ class BarcodeViewModel : BaseViewModel() {
     val result = MutableLiveData<Product>()
 
     fun getResult(barcode: String) {
+        isLoading.value = true
         addDisposable(
             barcodeRepository.getProduct(barcode), {
+                isLoading.value = false
                 result.value = it
             }, {
+                isLoading.value = false
                 onErrorEvent.value = it
             }
         )

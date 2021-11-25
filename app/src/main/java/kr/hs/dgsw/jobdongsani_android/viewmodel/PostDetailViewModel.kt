@@ -13,11 +13,14 @@ class PostDetailViewModel : BaseViewModel() {
     val board = MutableLiveData<TrashShareBoardResponse>()
 
     fun getTrashShareBoard(id: Int) {
+        isLoading.value = true
         addDisposable(
             trashShareBoardRepository.getPostById(id), {
                 board.value = it
+                isLoading.value = false
             }, {
                 onErrorEvent.value = it
+                isLoading.value = false
             })
     }
 

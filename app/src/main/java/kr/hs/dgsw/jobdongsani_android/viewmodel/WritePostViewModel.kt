@@ -25,6 +25,7 @@ class WritePostViewModel : BaseViewModel() {
         if (title.value.isNullOrBlank() || content.value.isNullOrBlank() || phoneNumber.value.isNullOrBlank() || local.value.isNullOrBlank()) {
             emptyEvent.call()
         } else {
+            isLoading.value = true
             addDisposable(
                 trashShareBoardRepository.writePost(title.value!!,
                     content.value ?: "",
@@ -32,8 +33,10 @@ class WritePostViewModel : BaseViewModel() {
                     local.value ?: "",
                     image.value ?: throw NullPointerException()), {
                     onWritePostSuccessEvent.value = it
+                    isLoading.value = false
                 }, {
                     onErrorEvent.value = it
+                    isLoading.value = false
                 }
             )
         }

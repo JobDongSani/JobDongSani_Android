@@ -7,6 +7,7 @@ import kr.hs.dgsw.jobdongsani_android.model.request.ProductRequest
 class PickWasteTypeViewModel : BaseViewModel() {
 
     fun postProduct(barcode: String, type: String) {
+        isLoading.value = true
         addDisposable(
             productApi.postProduct(ProductRequest(barcode, type)), {
                 isLoading.value = false

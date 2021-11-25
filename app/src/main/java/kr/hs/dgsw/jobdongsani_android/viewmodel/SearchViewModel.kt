@@ -15,9 +15,14 @@ class SearchViewModel : BaseViewModel() {
     val searchWord = MutableLiveData<String>()
 
     init {
-        addDisposable(trashShareBoardRepository.getAllPost(),
-            { allBoard.value = it },
-            { onErrorEvent.value = it })
+        isLoading.value = true
+        addDisposable(trashShareBoardRepository.getAllPost(), {
+            allBoard.value = it
+            isLoading.value = false
+        }, {
+            onErrorEvent.value = it
+            isLoading.value = true
+        })
     }
 
     fun searchBoards() {
