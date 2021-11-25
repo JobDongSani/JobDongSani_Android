@@ -42,7 +42,12 @@
         android:id="@+id/postDetailFragment"
         android:name="kr.hs.dgsw.jobdongsani_android.view.PostDetailFragment"
         android:label="postDetailFragment"
-        tools:layout="@layout/fragment_post_detail" />
+        tools:layout="@layout/fragment_post_detail" >
+
+        <argument android:name="id"
+            app:argType="integer" />
+
+    </fragment>
     <fragment
         android:id="@+id/writePostFragment"
         android:name="kr.hs.dgsw.jobdongsani_android.view.WritePostFragment"
@@ -51,5 +56,10 @@
         <action
             android:id="@+id/action_writePostFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_writePostFragment_to_postDetailFragment"
+            app:popUpTo="@id/writePostFragment"
+            app:popUpToInclusive="true"
+            app:destination="@id/postDetailFragment" />
     </fragment>
 </navigation>
