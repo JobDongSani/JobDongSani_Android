@@ -29,13 +29,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
         mBinding.rvSharePost.adapter = sharePostAdapter
 
         with(mViewModel) {
-            onWritePostClickEvent.observe(this@HomeFragment,{
+            mBinding.btnWritePost.setOnClickListener {
                 findNavController().navigate(R.id.action_homeFragment_to_writePostFragment)
-            })
-            onClickBarcodeEvent.observe(this@HomeFragment, {
+            }
+            mBinding.btnBarcode.setOnClickListener {
                 val intent = Intent(requireContext(), BarcodeActivity::class.java)
                 startActivity(intent)
-            })
+            }
         }
     }
 

@@ -28,7 +28,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="5dp"
                 android:padding="17dp"
-                android:onClick="@{vm::onClickBarcode}"
                 android:src="@drawable/ic_barcode"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -52,6 +51,7 @@
             tools:listitem="@layout/item_share_post" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btn_write_post"
             android:layout_width="64dp"
             android:layout_height="64dp"
             android:layout_gravity="bottom|end"
@@ -62,7 +62,6 @@
             android:src="@drawable/ic_img_plus"
             app:backgroundTint="@color/main"
             app:tint="@color/white"
-            android:onClick="@{vm::onClickWritePost}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
