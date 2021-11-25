@@ -26,6 +26,9 @@ class RecyclePostAdapter :
                 onClickDelete.value = productEntity
                 return@setOnLongClickListener false
             }
+            binding.layout.setOnClickListener {
+                onClickDetail.value = productEntity
+            }
         }
 
     }
@@ -47,5 +50,6 @@ class RecyclePostAdapter :
 
     companion object {
         val onClickDelete = SingleLiveEvent<ProductEntity>()
+        val onClickDetail = SingleLiveEvent<ProductEntity>()
     }
 }

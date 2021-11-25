@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            android:background="@drawable/background_dialog_card"
+            android:orientation="vertical"
+            android:paddingHorizontal="10dp">
+
+            <TextView
+                android:id="@+id/tv_product_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/noto_sans_medium"
+                android:textColor="@color/textColor"
+                android:textSize="15sp"
+                tools:text="롯데)비타씨 박스 12알 x 24개 새콤달콤" />
+
+            <TextView
+                android:id="@+id/tv_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/noto_sans_medium"
+                android:textColor="@color/textColor"
+                android:textSize="15sp"
+                tools:text="종류: 캔/금속류" />
+
+            <TextView
+                android:id="@+id/tv_recycle_way"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/noto_sans_medium"
+                android:textColor="@color/textColor"
+                android:textSize="15sp"
+                tools:text="분리수거 방법: 물로 헹구어 가능한 한 압착하여 배출\n*부탄가스등은 구멍을 내어 배출" />
+
+        </LinearLayout>
+
+    </FrameLayout>
+</layout>
