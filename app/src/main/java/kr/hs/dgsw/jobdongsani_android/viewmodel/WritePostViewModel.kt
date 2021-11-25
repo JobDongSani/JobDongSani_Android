@@ -5,9 +5,11 @@ import androidx.lifecycle.MutableLiveData
 import kr.hs.dgsw.jobdongsani_android.R
 import kr.hs.dgsw.jobdongsani_android.base.BaseViewModel
 import kr.hs.dgsw.jobdongsani_android.util.SingleLiveEvent
+import java.io.File
 
 class WritePostViewModel : BaseViewModel() {
 
+    val image = MutableLiveData<File>()
     val title = MutableLiveData<String>()
     val content = MutableLiveData<String>()
     val phoneNumber = MutableLiveData<String>()
