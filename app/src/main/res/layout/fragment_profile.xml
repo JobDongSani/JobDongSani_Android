@@ -22,8 +22,6 @@
             android:layout_height="64dp"
             android:layout_marginStart="15dp"
             android:layout_marginTop="20dp"
-            android:scaleType="centerCrop"
-            android:src="@{vm.userImage}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:src="@mipmap/ic_launcher" />
