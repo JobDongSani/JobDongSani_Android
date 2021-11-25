@@ -30,12 +30,12 @@
                 android:background="#C4C4C4" />
 
             <ImageView
+                android:id="@+id/btn_back"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_gravity="top|start"
                 android:layout_margin="20dp"
-                android:src="@drawable/ic_left_arrow"
-                android:background="#C4C4C4" />
+                android:src="@drawable/ic_left_arrow" />
 
 
         </FrameLayout>

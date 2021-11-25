@@ -49,6 +49,8 @@
                         android:layout_height="match_parent"
                         android:layout_marginHorizontal="10dp"
                         android:text="@={vm.searchWord}"
+                        android:maxLines="1"
+                        android:singleLine="true"
                         android:backgroundTint="@android:color/transparent"
                         android:fontFamily="@font/noto_sans_light"
                         android:includeFontPadding="false"
