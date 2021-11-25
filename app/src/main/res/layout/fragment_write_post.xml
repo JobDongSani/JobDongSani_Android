@@ -5,17 +5,21 @@
 
     <data>
 
+        <variable
+            name="vm"
+            type="kr.hs.dgsw.jobdongsani_android.viewmodel.WritePostViewModel" />
     </data>
-
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:orientation="vertical"
             tools:context=".WritePostFragment">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -66,6 +70,7 @@
                 android:layout_height="50dp"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="15dp"
+                android:onClick="@{}"
                 android:src="@drawable/ic_image_picker"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/layout_appbar" />
@@ -77,8 +82,7 @@
                 android:layout_marginHorizontal="15dp"
                 android:layout_marginTop="20dp"
                 android:background="@color/light_grey"
-                app:layout_constraintTop_toBottomOf="@+id/btn_image_picker"
-                tools:layout_editor_absoluteX="15dp" />
+                android:windowSoftInputMode="adjustResize|adjustPan" />
 
             <EditText
                 android:id="@+id/et_title"
@@ -87,15 +91,15 @@
                 android:layout_marginHorizontal="15dp"
                 android:layout_marginTop="45dp"
                 android:backgroundTint="@color/light_grey"
+                android:clickable="false"
                 android:fontFamily="@font/noto_sans_medium"
                 android:hint="제목을 입력해주세요"
-                android:imeOptions="flagNoExtractUi|flagNoFullscreen|flagNoAccessoryAction"
                 android:includeFontPadding="false"
                 android:inputType="text"
                 android:privateImeOptions="nm"
+                android:text="@={vm.title}"
                 android:textColor="@color/black"
-                android:textSize="13sp"
-                app:layout_constraintTop_toBottomOf="@+id/view3" />
+                android:textSize="13sp" />
 
             <EditText
                 android:id="@+id/et_content"
@@ -106,13 +110,12 @@
                 android:backgroundTint="@color/light_grey"
                 android:fontFamily="@font/noto_sans_medium"
                 android:hint="내용을 입력해주세요"
-                android:imeOptions="flagNoExtractUi|flagNoFullscreen|flagNoAccessoryAction"
                 android:includeFontPadding="false"
                 android:inputType="text"
                 android:privateImeOptions="nm"
+                android:text="@={vm.content}"
                 android:textColor="@color/black"
-                android:textSize="13sp"
-                app:layout_constraintTop_toBottomOf="@+id/et_title" />
+                android:textSize="13sp" />
 
             <EditText
                 android:id="@+id/et_phone_number"
@@ -122,14 +125,14 @@
                 android:layout_marginTop="40dp"
                 android:backgroundTint="@color/light_grey"
                 android:fontFamily="@font/noto_sans_medium"
-                android:hint="전화번호를 입력해주세요"
-                android:imeOptions="flagNoExtractUi|flagNoFullscreen|flagNoAccessoryAction"
+                android:hint="전화번호를 입력해주세요 (- 제외)"
                 android:includeFontPadding="false"
-                android:inputType="text"
+                android:inputType="number"
+                android:maxLength="11"
                 android:privateImeOptions="nm"
+                android:text="@={vm.phoneNumber}"
                 android:textColor="@color/black"
-                android:textSize="13sp"
-                app:layout_constraintTop_toBottomOf="@+id/et_content" />
+                android:textSize="13sp" />
 
             <EditText
                 android:id="@+id/et_local"
@@ -140,26 +143,27 @@
                 android:backgroundTint="@color/light_grey"
                 android:fontFamily="@font/noto_sans_medium"
                 android:hint="지역을 입력해주세요(ex. OO군 OO동)"
-                android:imeOptions="flagNoExtractUi|flagNoFullscreen|flagNoAccessoryAction"
                 android:includeFontPadding="false"
                 android:inputType="text"
                 android:privateImeOptions="nm"
+                android:text="@={vm.local}"
                 android:textColor="@color/black"
-                android:textSize="13sp"
-                app:layout_constraintTop_toBottomOf="@+id/et_phone_number" />
+                android:textSize="13sp" />
 
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_write_post"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
+                android:layout_gravity="bottom"
+                android:layout_marginTop="150dp"
                 android:backgroundTint="@color/main"
                 android:fontFamily="@font/noto_sans_medium"
                 android:includeFontPadding="false"
+                android:onClick="@{vm::onClickWritePost}"
                 android:text="게시글 작성"
-                android:textColor="@color/white"
-                app:layout_constraintBottom_toBottomOf="parent" />
+                android:textColor="@color/white" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
     </ScrollView>
 </layout>
