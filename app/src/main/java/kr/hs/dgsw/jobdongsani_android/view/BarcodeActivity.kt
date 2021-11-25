@@ -39,6 +39,7 @@ class BarcodeActivity : AppCompatActivity() {
                 }
                 else -> {
                     binding.tvSeparateCollection.text = "분리수거: ${wasteType[it.wasteType] ?: ""}"
+                    viewModel.saveProduct(it.copy(way = wasteType[it.wasteType] ?: ""))
                 }
             }
         })
