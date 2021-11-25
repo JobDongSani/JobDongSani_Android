@@ -30,6 +30,7 @@ class PickWasteTypeDialog(val barcode: String) : DialogFragment() {
             container,
             false)
         binding.lifecycleOwner = viewLifecycleOwner
+        binding.vm = viewModel
 
         val pickWasteTypeAdapter = PickWasteTypeAdapter().apply {
             submitList(wasteType.keys.toList())
@@ -40,7 +41,7 @@ class PickWasteTypeDialog(val barcode: String) : DialogFragment() {
         })
 
         viewModel.getIsLoading().observe(this, {
-            dismiss()
+            if(!it) dismiss()
         })
         viewModel.onErrorEvent.observe(this, {
             Toast.makeText(requireContext(), "${it.message}", Toast.LENGTH_SHORT).show()
