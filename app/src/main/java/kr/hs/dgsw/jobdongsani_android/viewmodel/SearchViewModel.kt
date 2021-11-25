@@ -5,17 +5,24 @@ import kr.hs.dgsw.jobdongsani_android.base.BaseViewModel
 import kr.hs.dgsw.jobdongsani_android.model.response.TrashShareBoardResponse
 import kr.hs.dgsw.jobdongsani_android.repository.TrashShareBoardRepository
 
-class SearchViewModel: BaseViewModel() {
+class SearchViewModel : BaseViewModel() {
 
     private val trashShareBoardRepository = TrashShareBoardRepository()
 
+    private val allBoard = MutableLiveData<List<TrashShareBoardResponse>>()
     val searchResult = MutableLiveData<List<TrashShareBoardResponse>>()
 
     val searchWord = MutableLiveData<String>()
 
-    fun searchBoards() {
-        searchWord.value?.trim()?.let {
+    init {
+        addDisposable(trashShareBoardRepository.getAllPost(),
+            { allBoard.value = it },
+            { onErrorEvent.value = it })
+    }
 
+    fun searchBoards() {
+        searchWord.value?.trim()?.let { search ->
+            searchResult.value = allBoard.value?.filter { it.title.contains(search) }
         }
     }
 
