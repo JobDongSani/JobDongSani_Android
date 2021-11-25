@@ -1,13 +1,15 @@
 package kr.hs.dgsw.jobdongsani_android.viewmodel
 
-import android.view.View
 import androidx.lifecycle.MutableLiveData
-import kr.hs.dgsw.jobdongsani_android.R
 import kr.hs.dgsw.jobdongsani_android.base.BaseViewModel
+import kr.hs.dgsw.jobdongsani_android.repository.TrashShareBoardRepository
 import kr.hs.dgsw.jobdongsani_android.util.SingleLiveEvent
 import java.io.File
+import java.lang.NullPointerException
 
 class WritePostViewModel : BaseViewModel() {
+
+    private val trashShareBoardRepository = TrashShareBoardRepository()
 
     val image = MutableLiveData<File>()
     val title = MutableLiveData<String>()
@@ -15,22 +17,27 @@ class WritePostViewModel : BaseViewModel() {
     val phoneNumber = MutableLiveData<String>()
     val local = MutableLiveData<String>()
 
-    val onWritePostSuccessEvent = SingleLiveEvent<Unit>()
-    val onWritePostClickEvent = SingleLiveEvent<Unit>()
-    val onImagePickEvent = SingleLiveEvent<Unit>()
+    val onWritePostSuccessEvent = SingleLiveEvent<Int>()
 
     val emptyEvent = SingleLiveEvent<Unit>()
 
-    fun onClickWritePost(view: View?) {
+    fun onClickWritePost() {
         if (title.value.isNullOrBlank() || content.value.isNullOrBlank() || phoneNumber.value.isNullOrBlank() || local.value.isNullOrBlank()) {
             emptyEvent.call()
         } else {
-            onWritePostSuccessEvent.call()
+            addDisposable(
+                trashShareBoardRepository.writePost(title.value!!,
+                    content.value ?: "",
+                    phoneNumber.value ?: "",
+                    local.value ?: "",
+                    image.value ?: throw NullPointerException()), {
+                    onWritePostSuccessEvent.value = it
+                }, {
+                    onErrorEvent.value = it
+                }
+            )
         }
 
     }
 
-    fun onClickImagePick(view: View?) {
-        onImagePickEvent.call()
-    }
 }

@@ -22,13 +22,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
     override val isBottomNavFragment = true
 
     override fun observerViewModel() {
-        val sharePostAdapter = SharePostAdapter().apply {
-            submitList(listOf(Any(), Any(), Any()))
-        }
-
+        val sharePostAdapter = SharePostAdapter()
         mBinding.rvSharePost.adapter = sharePostAdapter
 
         with(mViewModel) {
+            getBoard()
             mBinding.btnWritePost.setOnClickListener {
                 findNavController().navigate(R.id.action_homeFragment_to_writePostFragment)
             }
@@ -36,6 +34,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
                 val intent = Intent(requireContext(), BarcodeActivity::class.java)
                 startActivity(intent)
             }
+            SharePostAdapter.onClick.observe(this@HomeFragment, {
+                findNavController()
+                    .navigate(HomeFragmentDirections.actionHomeFragmentToPostDetailFragment(it))
+            })
+            boardList.observe(this@HomeFragment, {
+                sharePostAdapter.submitList(it)
+            })
         }
     }
 

@@ -21,7 +21,7 @@ import java.io.OutputStream
 class WritePostFragment : BaseFragment<FragmentWritePostBinding, WritePostViewModel>() {
     override val viewModel: WritePostViewModel by viewModels()
 
-    var onPickImageResult = registerForActivityResult(
+    private var onPickImageResult = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     ) { result: ActivityResult ->
         if (result.resultCode == AppCompatActivity.RESULT_OK) {
@@ -38,7 +38,7 @@ class WritePostFragment : BaseFragment<FragmentWritePostBinding, WritePostViewMo
         with(mViewModel) {
             onWritePostSuccessEvent.observe(this@WritePostFragment, {
                 Toast.makeText(requireContext(), "게시물을 작성하였습니다", Toast.LENGTH_SHORT).show()
-                findNavController().navigate(R.id.action_writePostFragment_to_homeFragment)
+                findNavController().navigate(WritePostFragmentDirections.actionWritePostFragmentToPostDetailFragment(it))
             })
             emptyEvent.observe(this@WritePostFragment, {
                 Toast.makeText(requireContext(), "빈 칸을 전부 채워주세요.", Toast.LENGTH_SHORT).show()
@@ -56,7 +56,7 @@ class WritePostFragment : BaseFragment<FragmentWritePostBinding, WritePostViewMo
         }
     }
 
-    fun getRealPath(uri: Uri): String {
+    private fun getRealPath(uri: Uri): String {
         val contentResolver = requireContext().contentResolver ?: throw NullPointerException()
 
         val filePath = (requireContext().applicationInfo.dataDir + File.separator
@@ -74,5 +74,10 @@ class WritePostFragment : BaseFragment<FragmentWritePostBinding, WritePostViewMo
         } catch (e: Exception) {
             throw e
         }
+    }
+
+    override fun onErrorEvent(e: Throwable) {
+        super.onErrorEvent(e)
+        Toast.makeText(requireContext(), "${e.message}", Toast.LENGTH_SHORT).show()
     }
 }

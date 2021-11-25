@@ -1,6 +1,7 @@
 package kr.hs.dgsw.jobdongsani_android.view
 
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import kr.hs.dgsw.jobdongsani_android.adapter.SearchPostAdapter
 import kr.hs.dgsw.jobdongsani_android.base.BaseFragment
 import kr.hs.dgsw.jobdongsani_android.databinding.FragmentSearchBinding
@@ -13,10 +14,17 @@ class SearchFragment : BaseFragment<FragmentSearchBinding, SearchViewModel>() {
     override val isBottomNavFragment = true
 
     override fun observerViewModel() {
-        val searchPostAdapter = SearchPostAdapter().apply {
-            submitList(listOf(Any(), Any(), Any(), Any(), Any(), Any(), Any()))
-        }
-
+        val searchPostAdapter = SearchPostAdapter()
         mBinding.rvSearchPost.adapter = searchPostAdapter
+
+        with(viewModel) {
+            searchResult.observe(this@SearchFragment, {
+                searchPostAdapter.submitList(it)
+            })
+            SearchPostAdapter.onClick.observe(this@SearchFragment, {
+                findNavController()
+                    .navigate(SearchFragmentDirections.actionSearchFragmentToPostDetailFragment(it))
+            })
+        }
     }
 }

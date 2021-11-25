@@ -8,6 +8,7 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout"
         android:layout_width="match_parent"
         android:layout_height="85dp"
         android:layout_marginVertical="10dp"
@@ -23,6 +24,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
+                android:id="@+id/iv_thumnail"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="#C4C4C4" />
