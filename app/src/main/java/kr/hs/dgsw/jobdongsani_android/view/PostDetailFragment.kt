@@ -1,6 +1,7 @@
 package kr.hs.dgsw.jobdongsani_android.view
 
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import kr.hs.dgsw.jobdongsani_android.base.BaseFragment
 import kr.hs.dgsw.jobdongsani_android.databinding.FragmentPostDetailBinding
@@ -24,6 +25,9 @@ class PostDetailFragment : BaseFragment<FragmentPostDetailBinding, PostDetailVie
                     .load(it.imagePath)
                     .into(mBinding.tvThumbnail)
 
+                mBinding.btnBack.setOnClickListener {
+                    findNavController().popBackStack()
+                }
             })
         }
     }
