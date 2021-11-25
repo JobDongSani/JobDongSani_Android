@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="vm"
+            type="kr.hs.dgsw.jobdongsani_android.viewmodel.HomeViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -26,6 +28,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="5dp"
                 android:padding="17dp"
+                android:onClick="@{vm::onClickBarcode}"
                 android:src="@drawable/ic_barcode"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -59,6 +62,7 @@
             android:src="@drawable/ic_img_plus"
             app:backgroundTint="@color/main"
             app:tint="@color/white"
+            android:onClick="@{vm::onClickWritePost}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
