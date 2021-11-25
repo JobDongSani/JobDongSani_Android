@@ -9,7 +9,9 @@ import retrofit2.http.*
 
 interface TrashShareBoardApi {
     @POST("/trash-share-board")
-    fun writePost() : Single<Response<BaseResponse<Int>>>
+    fun writePost(
+        @Body trashShareBoardRequest: TrashShareBoardRequest
+    ) : Single<Response<BaseResponse<Int>>>
 
     @GET("/trash-share-board/{id}")
     fun getPostById(
@@ -17,7 +19,7 @@ interface TrashShareBoardApi {
     ) : Single<Response<BaseResponse<TrashShareBoardResponse>>>
 
     @GET("/trash-share-board")
-    fun getAllPost() : Single<List<TrashShareBoardResponse>>
+    fun getAllPost() : Single<Response<BaseResponse<List<TrashShareBoardResponse>>>>
 
     @PUT("/trash-share-board/{id}")
     fun modifyPost(
