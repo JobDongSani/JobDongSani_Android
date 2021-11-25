@@ -10,6 +10,7 @@ import retrofit2.http.*
 interface TrashShareBoardApi {
     @POST("/trash-share-board")
     fun writePost(
+        @Header("Authorization") accessToken : String,
         @Body trashShareBoardRequest: TrashShareBoardRequest
     ) : Single<Response<BaseResponse<Int>>>
 
@@ -28,7 +29,7 @@ interface TrashShareBoardApi {
 
     @DELETE("/trash-share-board/{id}")
     fun deletePost(
-        @Header("Authorzation") accessToken : String,
+        @Header("Authorization") accessToken : String,
         @Path("id") postId : Int
     ) : Single<Response<BaseResponse<Any>>>
 }

@@ -171,7 +171,7 @@
                 android:backgroundTint="@color/main"
                 android:fontFamily="@font/noto_sans_medium"
                 android:includeFontPadding="false"
-                android:onClick="@{vm::onClickWritePost}"
+                android:onClick="@{()->vm.onClickWritePost()}"
                 android:text="게시글 작성"
                 android:textColor="@color/white" />
 
