@@ -11,6 +11,7 @@ import androidx.databinding.DataBindingUtil
 import com.google.zxing.integration.android.IntentIntegrator
 import kr.hs.dgsw.jobdongsani_android.R
 import kr.hs.dgsw.jobdongsani_android.databinding.ActivityBarcodeBinding
+import kr.hs.dgsw.jobdongsani_android.util.WasteType.wasteType
 import kr.hs.dgsw.jobdongsani_android.viewmodel.BarcodeViewModel
 
 class BarcodeActivity : AppCompatActivity() {
@@ -35,6 +36,9 @@ class BarcodeActivity : AppCompatActivity() {
             when (it.wasteType) {
                 "" -> {
                     PickWasteTypeDialog(it.barcode).show(supportFragmentManager, "Pick Waste Type")
+                }
+                else -> {
+                    binding.tvSeparateCollection.text = "분리수거: ${wasteType[it.wasteType] ?: ""}"
                 }
             }
         })

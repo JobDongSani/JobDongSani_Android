@@ -13,6 +13,7 @@ import androidx.fragment.app.viewModels
 import kr.hs.dgsw.jobdongsani_android.R
 import kr.hs.dgsw.jobdongsani_android.adapter.PickWasteTypeAdapter
 import kr.hs.dgsw.jobdongsani_android.databinding.DialogPickWasteTypeBinding
+import kr.hs.dgsw.jobdongsani_android.util.WasteType.wasteType
 import kr.hs.dgsw.jobdongsani_android.viewmodel.PickWasteTypeViewModel
 
 class PickWasteTypeDialog(val barcode: String) : DialogFragment() {
@@ -31,7 +32,7 @@ class PickWasteTypeDialog(val barcode: String) : DialogFragment() {
         binding.lifecycleOwner = viewLifecycleOwner
 
         val pickWasteTypeAdapter = PickWasteTypeAdapter().apply {
-            submitList(listOf("종이류", "플라스틱류", "고철류", "의 류", "캔 류", "BOX류", "비닐류"))
+            submitList(wasteType.keys.toList())
         }
 
         PickWasteTypeAdapter.onClick.observe(this, {
