@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import kr.hs.dgsw.jobdongsani_android.R
 import kr.hs.dgsw.jobdongsani_android.adapter.SharePostAdapter
 import kr.hs.dgsw.jobdongsani_android.base.BaseFragment
@@ -21,17 +22,21 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
     override val isBottomNavFragment = true
 
     override fun observerViewModel() {
-
         val sharePostAdapter = SharePostAdapter().apply {
             submitList(listOf(Any(), Any(), Any()))
         }
 
-        mBinding.btnBarcode.setOnClickListener {
-            val intent= Intent(requireContext(), BarcodeActivity::class.java)
-            startActivity(intent)
-        }
-
         mBinding.rvSharePost.adapter = sharePostAdapter
+
+        with(mViewModel) {
+            onWritePostClickEvent.observe(this@HomeFragment,{
+                findNavController().navigate(R.id.action_homeFragment_to_writePostFragment)
+            })
+            onClickBarcodeEvent.observe(this@HomeFragment, {
+                val intent = Intent(requireContext(), BarcodeActivity::class.java)
+                startActivity(intent)
+            })
+        }
     }
 
 }
